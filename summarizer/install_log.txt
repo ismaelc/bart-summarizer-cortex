@@ -1,0 +1,147 @@
+(summarizer-cortex) C02QW28MFVH8:summarizer i845622$ cortex cluster up
+
+email address [press enter to skip]: 
+
+aws region [us-west-2]: us-east-1
+
+s3 bucket [cortex-9228406436]: 
+
+aws instance type [m5.large]: g4dn.xlarge
+
+min instances [1]: 
+
+max instances [5]: 
+
+aws access key id ****************VKHQ will be used to provision a cluster (cortex) in us-east-1:
+
+aws resource                                cost per hour
+1 eks cluster                               $0.10
+1 - 5 g4dn.xlarge instances for your apis   $0.526 each
+1 - 5 50gb ebs volumes for your apis        $0.007 each
+1 t3.medium instance for the operator       $0.0416
+1 20gb ebs volume for the operator          $0.003
+2 elastic load balancers                    $0.025 each
+
+your cluster will cost $0.73 - $2.86 per hour based on cluster size
+
+cortex will also create an s3 bucket (cortex-9228406436) and a cloudwatch log group (cortex)
+
+would you like to continue? (y/n): y
+
+￮ using existing s3 bucket: cortex-9228406436
+￮ using existing cloudwatch log group: cortex
+Error: unable to describe control plane "cortex": ResourceNotFoundException: No cluster found for name: cortex.
+        status code: 404, request id: 6b946c3f-0fef-40de-955e-0661da27c9fc
+￮ spinning up the cluster ... (this will take about 15 minutes)
+
+[ℹ]  eksctl version 0.13.0
+[ℹ]  using region us-east-1
+[ℹ]  setting availability zones to [us-east-1c us-east-1a]
+[ℹ]  subnets for us-east-1c - public:192.168.0.0/19 private:192.168.64.0/19
+[ℹ]  subnets for us-east-1a - public:192.168.32.0/19 private:192.168.96.0/19
+[ℹ]  using Kubernetes version 1.14
+[ℹ]  creating EKS cluster "cortex" in "us-east-1" region with 
+[ℹ]  will create a CloudFormation stack for cluster itself and 0 nodegroup stack(s)
+[ℹ]  will create a CloudFormation stack for cluster itself and 0 managed nodegroup stack(s)
+[ℹ]  if you encounter any issues, check CloudFormation console or try 'eksctl utils describe-stacks --region=us-east-1 --cluster=cortex'
+[ℹ]  Kubernetes API endpoint access will use default of {publicAccess=true, privateAccess=false} for cluster "cortex" in "us-east-1"
+[ℹ]  2 sequential tasks: { create cluster control plane "cortex", update CloudWatch logging configuration }
+[ℹ]  building cluster stack "eksctl-cortex-cluster"
+[ℹ]  deploying stack "eksctl-cortex-cluster"
+[✔]  configured CloudWatch logging for cluster "cortex" in "us-east-1" (enabled types: api, audit, authenticator, controllerManager, scheduler & no types disabled)
+[✔]  all EKS cluster resources for "cortex" have been created
+[✔]  saved kubeconfig as "/root/.kube/config"
+[ℹ]  kubectl command should work with "/root/.kube/config", try 'kubectl get nodes'
+[✔]  EKS cluster "cortex" in "us-east-1" region is ready
+[ℹ]  eksctl version 0.13.0
+[ℹ]  using region us-east-1
+[ℹ]  nodegroup "ng-cortex-operator" will use "ami-0d373fa5015bc43be" [AmazonLinux2/1.14]
+[ℹ]  nodegroup "ng-cortex-worker-on-demand" will use "ami-014689822172960ea" [AmazonLinux2/1.14]
+[ℹ]  2 nodegroups (ng-cortex-operator, ng-cortex-worker-on-demand) were included (based on the include/exclude rules)
+[ℹ]  will create a CloudFormation stack for each of 2 nodegroups in cluster "cortex"
+[ℹ]  2 sequential tasks: { fix cluster compatibility, 1 task: { 2 parallel tasks: { create nodegroup "ng-cortex-operator", create nodegroup "ng-cortex-worker-on-demand" } } }
+[ℹ]  checking cluster stack for missing resources
+[ℹ]  cluster stack has all required resources
+[ℹ]  building nodegroup stack "eksctl-cortex-nodegroup-ng-cortex-worker-on-demand"
+[ℹ]  building nodegroup stack "eksctl-cortex-nodegroup-ng-cortex-operator"
+[ℹ]  deploying stack "eksctl-cortex-nodegroup-ng-cortex-worker-on-demand"
+[ℹ]  deploying stack "eksctl-cortex-nodegroup-ng-cortex-operator"
+[!]  retryable error (RequestError: send request failed
+caused by: Post https://cloudformation.us-east-1.amazonaws.com/: EOF) from cloudformation/DescribeStacks - will retry after delay of 43.845681ms
+[ℹ]  adding identity "arn:aws:iam::547474725367:role/eksctl-cortex-nodegroup-ng-cortex-NodeInstanceRole-IZJ1HLAUEGRB" to auth ConfigMap
+[ℹ]  nodegroup "ng-cortex-operator" has 0 node(s)
+[ℹ]  waiting for at least 1 node(s) to become ready in "ng-cortex-operator"
+[ℹ]  nodegroup "ng-cortex-operator" has 1 node(s)
+[ℹ]  node "ip-192-168-62-235.ec2.internal" is ready
+[ℹ]  adding identity "arn:aws:iam::547474725367:role/eksctl-cortex-nodegroup-ng-cortex-NodeInstanceRole-WONBFBCXHQI6" to auth ConfigMap
+[ℹ]  nodegroup "ng-cortex-worker-on-demand" has 0 node(s)
+[ℹ]  waiting for at least 1 node(s) to become ready in "ng-cortex-worker-on-demand"
+[ℹ]  nodegroup "ng-cortex-worker-on-demand" has 1 node(s)
+[ℹ]  node "ip-192-168-11-66.ec2.internal" is ready
+[ℹ]  as you are using a GPU optimized instance type you will need to install NVIDIA Kubernetes device plugin.
+[ℹ]      see the following page for instructions: https://github.com/NVIDIA/k8s-device-plugin
+[✔]  created 2 nodegroup(s) in cluster "cortex"
+[✔]  created 0 managed nodegroup(s) in cluster "cortex"
+[ℹ]  checking security group configuration for all nodegroups
+[ℹ]  all nodegroups have up-to-date configuration
+
+￮ updating cluster configuration ✓
+￮ configuring networking .....................✓
+￮ configuring autoscaling ✓
+￮ configuring logging ✓
+￮ configuring metrics ✓
+￮ configuring gpu support ✓
+￮ starting operator ✓
+￮ waiting for load balancers .....................................✓
+￮ downloading docker images ✓
+￮ configuring cli ✓
+
+cortex is ready!
+(summarizer-cortex) C02QW28MFVH8:summarizer i845622$ cortex deploy
+
+creating summarizer
+
+cortex get              (show api statuses)
+cortex get summarizer   (show api info)
+cortex logs summarizer  (stream api logs)
+(summarizer-cortex) C02QW28MFVH8:summarizer i845622$ cortex get
+
+api          status     up-to-date   requested   last update   avg request   2XX   
+summarizer   updating   0            1           4s            -             -     
+
+(summarizer-cortex) C02QW28MFVH8:summarizer i845622$ cortex get summarizer
+
+status   up-to-date   requested   last update   avg request   2XX   
+live     1            1           1m            -             -     
+
+endpoint: http://a2be72d506d9c11eaa64d0ebe135216a-642860475.us-east-1.elb.amazonaws.com/summarizer
+curl: curl http://a2be72d506d9c11eaa64d0ebe135216a-642860475.us-east-1.elb.amazonaws.com/summarizer?debug=true -X POST -H "Content-Type: application/json" -d @sample.json
+
+configuration
+name: summarizer
+endpoint: /summarizer
+predictor:
+  type: python
+  path: predictor.py
+compute:
+  cpu: 1
+  gpu: 1
+  mem: 1G
+autoscaling:
+  min_replicas: 1
+  max_replicas: 100
+  init_replicas: 1
+  workers_per_replica: 1
+  threads_per_worker: 1
+  target_replica_concurrency: 1.0
+  max_replica_concurrency: 1024
+  window: 1m0s
+  downscale_stabilization_period: 5m0s
+  upscale_stabilization_period: 0s
+  max_downscale_factor: 0.5
+  max_upscale_factor: 10.0
+  downscale_tolerance: 0.1
+  upscale_tolerance: 0.1
+update_strategy:
+  max_surge: 25%
+  max_unavailable: 25%
